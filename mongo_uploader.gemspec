@@ -6,10 +6,10 @@ Gem::Specification.new do |s|
   s.name        = "mongo_uploader"
   s.version     = MongoUploader::VERSION
   s.authors     = ["Sandro Duarte"]
-  s.email       = ["sandroduarte@tre-rs.gov.br"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.email       = ["sandrods@gmail.com"]
+  s.homepage    = "https://github.com/sandrods/mongo-uploader"
+  s.summary     = %q{simple attachment handler to ActiveRecord wich stores files in MongoDB}
+  s.description = %q{simple attachment handler to ActiveRecord wich stores files in MongoDB}
 
   s.rubyforge_project = "mongo_uploader"
 
