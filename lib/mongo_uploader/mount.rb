@@ -51,11 +51,11 @@ module MongoUploader
         @storage ||= MongoUploader::Storage.new()
       end
 
-      def with_value(column, &block)
-        return unless value = read_attribute(column.to_sym)
-        yield value
-      end
+    end
 
+    def with_value(column, &block)
+      return unless value = read_attribute(column.to_sym)
+      yield value
     end
 
   end
