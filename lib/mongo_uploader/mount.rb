@@ -20,7 +20,7 @@ module MongoUploader
 
         define_method("#{column.to_s}=") do |_file|
           obj_id = self.class.mongo_storage.store(_file)
-          write_attribute(column.to_sym, "#{obj_id}/#{file.original_filename.sanitize)}")
+          write_attribute(column.to_sym, "#{obj_id}/#{_file.original_filename.sanitize}")
         end
 
         define_method("#{column.to_s}") do
