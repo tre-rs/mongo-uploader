@@ -3,6 +3,8 @@ require 'timeout'
 require 'mime/types'
 require 'stringex'
 
+require "mongo_uploader/extensions/string"
+
 require "mongo_uploader/base"
 require "mongo_uploader/version"
 require "mongo_uploader/mount"
