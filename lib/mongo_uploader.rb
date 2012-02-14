@@ -6,6 +6,7 @@ require 'stringex'
 require "mongo_uploader/extensions/string"
 
 require "mongo_uploader/base"
+require "mongo_uploader/helper"
 require "mongo_uploader/version"
 require "mongo_uploader/mount"
 require "mongo_uploader/storage"

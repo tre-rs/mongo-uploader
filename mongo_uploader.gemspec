@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "mongo"
   s.add_runtime_dependency "bson"
   s.add_runtime_dependency "bson_ext"
+  s.add_runtime_dependency "actionpack"
 
   s.add_runtime_dependency "mime-types", "~> 1.17"
   s.add_runtime_dependency "stringex", "~> 1.3.0"

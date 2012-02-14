@@ -45,6 +45,11 @@ module MongoUploader
           read_attribute(column.to_sym).present?
         end
 
+        define_method("#{column.to_s}_size") do
+          return unless file = send("#{column.to_s}")
+          number_to_human_size(file.file_length)
+        end
+
       end
 
       def mongo_storage
