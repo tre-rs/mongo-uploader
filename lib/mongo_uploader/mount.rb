@@ -47,7 +47,7 @@ module MongoUploader
 
         define_method("#{column.to_s}_size") do
           return unless file = send("#{column.to_s}")
-          number_to_human_size(file.file_length)
+          Helper.new.number_to_human_size(file.file_length)
         end
 
       end
