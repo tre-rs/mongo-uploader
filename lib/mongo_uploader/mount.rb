@@ -31,6 +31,11 @@ module MongoUploader
         define_method("delete_#{column.to_s}") do
           return unless id = send("#{column.to_s}_id")
           self.class.mongo_storage.delete(id)
+        end
+
+        define_method("remove_#{column.to_s}") do
+          return unless id = send("#{column.to_s}_id")
+          self.class.mongo_storage.delete(id)
           write_attribute(column.to_sym, nil)
         end
 
