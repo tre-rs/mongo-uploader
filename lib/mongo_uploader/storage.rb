@@ -6,6 +6,11 @@ module MongoUploader
 
     def initialize()
       @db = Mongo::Connection.new(MongoUploader::Base.config.host).db(MongoUploader::Base.config.db)
+
+      if MongoUploader::Base.config.user && MongoUploader::Base.config.password
+        @db.authenticate(MongoUploader::Base.config.user, MongoUploader::Base.config.password)
+      end
+
       @grid = Mongo::Grid.new(@db)
     end
 
