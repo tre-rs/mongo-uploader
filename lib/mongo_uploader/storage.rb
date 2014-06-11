@@ -5,6 +5,8 @@ module MongoUploader
   class Storage
 
     def initialize()
+      MongoUploader.logger.info "MONGO - Connecting to #{MongoUploader::Base.config.host}:#{MongoUploader::Base.config.db}"
+
       @db = Mongo::Connection.new(MongoUploader::Base.config.host).db(MongoUploader::Base.config.db)
 
       if MongoUploader::Base.config.user && MongoUploader::Base.config.password
@@ -26,7 +28,7 @@ module MongoUploader
       @grid.get(id)
 
     rescue Mongo::GridFileNotFound => e
-      puts "MONGODB - #{e.message}"
+      MongoUploader.logger.error "MONGO - #{e.message}"
     end
 
     def delete(_id)
@@ -34,7 +36,7 @@ module MongoUploader
       @grid.delete(id)
 
     rescue Mongo::GridFileNotFound => e
-      puts "MONGODB - #{e.message}"
+      MongoUploader.logger.error "MONGO - #{e.message}"
     end
 
   end

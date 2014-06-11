@@ -15,7 +15,7 @@ require "mongo_uploader/middleware"
 require 'mongo_uploader/railtie' if defined?(Rails)
 
 module MongoUploader
-
+  mattr_accessor :logger
 end
 
 ActiveRecord::Base.send(:include, MongoUploader::Mount)
