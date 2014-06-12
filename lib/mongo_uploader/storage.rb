@@ -5,7 +5,7 @@ module MongoUploader
   class Storage
 
     def initialize()
-      MongoUploader.logger.info "CONNECT: #{MongoUploader::Base.config.host}:#{MongoUploader::Base.config.db}"
+      MongoUploader.logger.info "\nCONNECT: #{MongoUploader::Base.config.host}:#{MongoUploader::Base.config.db}"
 
       @db = Mongo::Connection.new(MongoUploader::Base.config.host).db(MongoUploader::Base.config.db)
 
@@ -36,6 +36,8 @@ module MongoUploader
     end
 
     def delete(_id)
+      MongoUploader.logger.debug "DELETE: #{_id}"
+
       id = BSON::ObjectId.from_string(_id)
       @grid.delete(id)
 
