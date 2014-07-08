@@ -23,6 +23,11 @@ module MongoUploader
           write_attribute(column.to_sym, "#{obj_id}/#{_file.original_filename.sanitize}")
         end
 
+        define_method("set_#{column.to_s}") do |_file|
+          obj_id = self.class.mongo_storage.store(_file)
+          update_column(column.to_sym, "#{obj_id}/#{_file.original_filename.sanitize}")
+        end
+
         define_method("#{column.to_s}") do
           return unless id = send("#{column.to_s}_id")
           self.class.mongo_storage.retrieve(id)
