@@ -33,6 +33,11 @@ module MongoUploader
           self.class.mongo_storage.retrieve(id)
         end
 
+        define_method("download_#{column.to_s}") do
+          return unless id = send("#{column.to_s}_id")
+          self.class.mongo_storage.retrieve(id).read.force_encoding("UTF-8")
+        end
+
         define_method("delete_#{column.to_s}") do
           return unless id = send("#{column.to_s}_id")
           self.class.mongo_storage.delete(id)
