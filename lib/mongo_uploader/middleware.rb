@@ -1,4 +1,3 @@
-
 require 'mongo'
 
 module MongoUploader
@@ -49,7 +48,7 @@ module MongoUploader
 
         file = @grid.get(oid)
 
-        [200, {'Content-Type' => file.content_type}, [file.read]]
+        [200, {'Content-Type' => file.content_type, 'Content-Length' => file.file_length.to_s}, [file.read]]
 
       else
 
