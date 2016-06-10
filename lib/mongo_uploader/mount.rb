@@ -50,7 +50,7 @@ module MongoUploader
         end
 
         define_method("#{column.to_s}_url") do
-           with_value(column) { |val| "/mongo/#{val}" }
+          with_value(column) { |val| "#{MongoUploader::Base.config.relative_url_root}/mongo/#{val}" }
         end
 
         define_method("#{column.to_s}_name") do

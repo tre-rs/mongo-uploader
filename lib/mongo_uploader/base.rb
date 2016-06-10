@@ -2,7 +2,7 @@ module MongoUploader
 
   class Base
 
-    attr_accessor :host, :db, :user, :password, :url_prefix
+    attr_accessor :host, :db, :user, :password, :url_prefix, :relative_url_root
 
     def initialize
       @host       = 'localhost'
@@ -10,6 +10,7 @@ module MongoUploader
       @url_prefix = 'mongo'
       @user       = nil
       @password   = nil
+      @relative_url_root = ""
     end
 
     class << self
