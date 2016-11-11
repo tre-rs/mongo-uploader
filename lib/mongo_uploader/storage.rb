@@ -4,10 +4,10 @@ module MongoUploader
 
   class Storage
 
-    def initialize()
-      MongoUploader.logger.info "\nCONNECT: #{MongoUploader::Base.config.host}:#{MongoUploader::Base.config.db}"
+    def initialize(db = MongoUploader::Base.config.db)
+      MongoUploader.logger.info "\nCONNECT: #{MongoUploader::Base.config.host}:#{db}"
 
-      @db = Mongo::Connection.new(MongoUploader::Base.config.host).db(MongoUploader::Base.config.db)
+      @db = Mongo::Connection.new(MongoUploader::Base.config.host).db(db)
 
       if MongoUploader::Base.config.user && MongoUploader::Base.config.password
         @db.authenticate(MongoUploader::Base.config.user, MongoUploader::Base.config.password)

@@ -10,7 +10,7 @@ module MongoUploader
 
     module ClassMethods
 
-      def mongo_attachment(column)
+      def mongo_attachment(column, opts = {})
 
         after_destroy "delete_#{column.to_s}".to_sym
 
@@ -64,6 +64,10 @@ module MongoUploader
         define_method("#{column.to_s}_size") do
           return unless file = send("#{column.to_s}")
           Helper.new.number_to_human_size(file.file_length)
+        end
+
+        if opts[:db].present?
+          @storage = MongoUploader::Storage.new(opts[:db])
         end
 
       end
